@@ -1,6 +1,7 @@
 package com.itclub4u.sell.service.impl;
 
 import com.itclub4u.sell.dataobject.ProductCategory;
+import com.itclub4u.sell.repository.ProductCategoryRepository;
 import com.itclub4u.sell.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import java.util.List;
 @Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
-    private CategoryService productCategoryService;
+    private ProductCategoryRepository repository;
 
     /**
      * 查询单个商品类目
@@ -19,7 +20,7 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public ProductCategory findOne(Integer categoryId) {
-        return productCategoryService.findOne(categoryId);
+        return repository.findOne(categoryId);
     }
 
     /**
@@ -28,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public List<ProductCategory> findAll() {
-        return productCategoryService.findAll();
+        return repository.findAll();
     }
 
     /**
@@ -38,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
-        return productCategoryService.findByCategoryTypeIn(categoryTypeList);
+        return repository.findByCategoryTypeIn(categoryTypeList);
     }
 
     /**
@@ -48,6 +49,6 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public ProductCategory save(ProductCategory productCategory) {
-        return productCategoryService.save(productCategory);
+        return repository.save(productCategory);
     }
 }

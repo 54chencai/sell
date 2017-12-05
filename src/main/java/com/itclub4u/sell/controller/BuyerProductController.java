@@ -7,6 +7,7 @@ import com.itclub4u.sell.dataobject.ProductCategory;
 import com.itclub4u.sell.dataobject.ProductInfo;
 import com.itclub4u.sell.service.CategoryService;
 import com.itclub4u.sell.service.ProductService;
+import com.itclub4u.sell.utils.ResultVOUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -65,13 +66,7 @@ public class BuyerProductController {
             productVOList.add(productVO);
         }
 
-        ResultVO resultVO = new ResultVO();
-        resultVO.setData(productVOList);
-        resultVO.setCode(0);
-        resultVO.setMsg("成功");
-
-
-        return resultVO;
+        return ResultVOUtil.success(productVOList);
 
     }
 }

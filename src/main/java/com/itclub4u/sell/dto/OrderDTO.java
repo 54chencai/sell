@@ -1,22 +1,16 @@
-package com.itclub4u.sell.dataobject;
+package com.itclub4u.sell.dto;
 
-import com.itclub4u.sell.enums.OrderStatusEnum;
-import com.itclub4u.sell.enums.PayStatusEnum;
+import com.itclub4u.sell.dataobject.OrderDetail;
 import lombok.Data;
-import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
-@Entity
 @Data
-@DynamicUpdate
-public class OrderMaster {
+public class OrderDTO {
 
     /** 订单号. */
-    @Id
     private String orderId;
 
     /** 买家名字. */
@@ -35,10 +29,10 @@ public class OrderMaster {
     private BigDecimal orderAmount;
 
     /** 订单状态,默认为新下单. */
-    private Integer orderStatus = OrderStatusEnum.NEW.getCode();
+    private Integer orderStatus;
 
     /** 支付状态,默认为未支付. */
-    private Integer payStatus = PayStatusEnum.WAIT.getCode();
+    private Integer payStatus;
 
     /** 创建时间. */
     private Date createTime;
@@ -46,4 +40,6 @@ public class OrderMaster {
     /** 更新时间. */
     private Date updateTime;
 
+    /** 商品列表. */
+    private List<OrderDetail> orderDetailList;
 }
