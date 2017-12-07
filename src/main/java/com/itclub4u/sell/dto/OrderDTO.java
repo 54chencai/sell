@@ -1,6 +1,8 @@
 package com.itclub4u.sell.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.itclub4u.sell.dataobject.OrderDetail;
+import com.itclub4u.sell.utils.serializer.Date2LongSerializer;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -8,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+//@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+//@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
 
     /** 订单号. */
@@ -35,9 +39,11 @@ public class OrderDTO {
     private Integer payStatus;
 
     /** 创建时间. */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date createTime;
 
     /** 更新时间. */
+    @JsonSerialize(using = Date2LongSerializer.class)
     private Date updateTime;
 
     /** 商品列表. */
